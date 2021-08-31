@@ -14,13 +14,10 @@ let cities = document.querySelector(".city");
 let button = document.querySelector(".search");
 
 // let city = "chennai";
-function search() {
-  city = cities.value;
-  cities.value = "";
-  getData();
-}
-// let city = "chennai";
-const getData = async () => {
+
+let city = "chennai";
+getData();
+async function getData() {
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=367261ea67167733e6e17d88b7110e22`;
   try {
     const response = await fetch(url);
@@ -30,11 +27,16 @@ const getData = async () => {
   } catch (err) {
     let da = document.createElement("div");
     da.className = "temp";
-    da.innerHTML = `<h3>Error</h3>`;
+    da.innerHTML = `<h3>Try again Later</h3>`;
     container.append(da);
     alert("not valid");
   }
-};
+}
+function search() {
+  city = cities.value;
+  cities.value = "";
+  getData();
+}
 function getDetails(data) {
   console.log(data);
 
@@ -59,13 +61,11 @@ function getDetails(data) {
                         <p class="temp">Wind : <span id="wind">${windSpeed}</span></p>
                     </div>
 `;
-  // let todayTime = document.querySelector(".time");
-  // let area = document.querySelector("#area");
-  // let wState = document.querySelector("#wState");
-  // let temp = document.querySelector("#temp");
-  // let wind = document.querySelector("#wind");
+
   container.append(info);
 }
+
+//addEventListener method:
 
 // getData("madurai");
 
