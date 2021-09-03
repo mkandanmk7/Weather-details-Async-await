@@ -125,5 +125,6 @@ hr {
 .temp > h3 {
   text-align: center;
   padding: 10px;
+  font-size: 25px;
   font-weight: bold;
 }

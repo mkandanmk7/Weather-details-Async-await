@@ -18,7 +18,7 @@ let button = document.querySelector(".search");
 let city = "chennai";
 getData();
 async function getData() {
-  let url = `https://api.openwethermap.org/data/2.5/weather?q=${city}&appid=367261ea67167733e6e17d88b7110e22`;
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=367261ea67167733e6e17d88b7110e22`;
   try {
     const response = await fetch(url);
     const data = await response.json();
