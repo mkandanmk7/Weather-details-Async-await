@@ -18,7 +18,7 @@ let button = document.querySelector(".search");
 let city = "chennai";
 getData();
 async function getData() {
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=367261ea67167733e6e17d88b7110e22`;
+  let url = `https://api.openwethermap.org/data/2.5/weather?q=${city}&appid=367261ea67167733e6e17d88b7110e22`;
   try {
     const response = await fetch(url);
     const data = await response.json();
@@ -27,9 +27,11 @@ async function getData() {
   } catch (err) {
     let da = document.createElement("div");
     da.className = "temp";
-    da.innerHTML = `<h3>Try again Later</h3>`;
+    da.innerHTML = `<h3>Try again Later</h3>
+    <img src="https://static8.depositphotos.com/1431107/919/i/600/depositphotos_9199988-stock-photo-oops-icon.jpg" alt="oops image">
+    `;
     container.append(da);
-    alert("not valid");
+    // alert("not valid");
   }
 }
 function search() {
@@ -40,7 +42,9 @@ function search() {
 function getDetails(data) {
   console.log(data);
 
-  let dateTime = new Date().toDateString();
+  let dateTime = new Date();
+  let time = dateTime.toLocaleTimeString();
+  let date = dateTime.toDateString();
   let cityName = data.name;
   let weatherState = data.weather[0].main;
   let temperature = Math.floor(data.main.temp);
@@ -50,7 +54,7 @@ function getDetails(data) {
   info.className = "info";
 
   info.innerHTML = `<div>
-                        <h1 class="time">${dateTime}</h1>
+                        <h1 class="time">${date} <small>${time}</small></h1>
                     </div>
                     <div class="content">
                         <p class="temp">Area : <span id="area">${cityName}</span></p>
